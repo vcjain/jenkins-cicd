@@ -47,6 +47,26 @@ Follow below steps to upgrade Jenkins instance to latest
 
 
 -----
+# Install Java 19 
+- sudo apt-get update
+- sudo apt-get install openjdk-19-jdk
+
+## Check Installation
+- java -version
+
+-----
+
+# Install Maven
+
+Download maven zip file from below URL
+- mkdir tools
+- cd tools
+- wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.zip
+- unzip apache-maven-3.9.4-bin.zip
+
+## Check Installation
+mvn -version
+-----
 
 
 # Git commands
