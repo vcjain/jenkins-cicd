@@ -1,5 +1,28 @@
 # jenkins-cicd
 
+------
+
+
+
+# Upgrade Jenkins on Ubuntu
+Follow below steps to upgrade Jenkins instance to latest
+
+### STOP Jenkins Service
+- sudo /etc/init.d/jenkins stop
+
+### Rename the Jenkins war file to war.old
+- cd /usr/share/jenkins
+- sudo mv jenkins.war jenkins.war.old
+  
+### Download latest war file
+- sudo wget https://updates.jenkins-ci.org/latest/jenkins.war
+
+### START Jenkins Service
+- sudo /etc/init.d/jenkins start
+
+
+------
+
 # Installing Jenkins on Ubuntu 22.04
 
 ## For more details plese visit - https://pkg.jenkins.io/debian-stable/
@@ -25,25 +48,7 @@ Open terminal and execute below command
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
-------
 
-
-
-# Upgrade Jenkins on Ubuntu
-Follow below steps to upgrade Jenkins instance to latest
-
-### STOP Jenkins Service
-- sudo /etc/init.d/jenkins stop
-
-### Rename the Jenkins war file to war.old
-- cd /usr/share/jenkins
-- sudo mv jenkins.war jenkins.war.old
-  
-### Download latest war file
-- sudo wget https://updates.jenkins-ci.org/latest/jenkins.war
-
-### START Jenkins Service
-- sudo /etc/init.d/jenkins start
 
 
 -----
