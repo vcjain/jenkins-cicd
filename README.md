@@ -57,6 +57,13 @@ Open terminal and execute below command
 # Install Maven
 
 Download the Maven zip file at the below URL if you want to play with Maven on your local machine. If you want to use it on Jenkins then you can install Maven directly from Jenkins console.
+
+Using package
+- sudo apt-get install maven -y
+
+
+##OR
+Using zip file
 - mkdir tools
 - cd tools
 - wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.zip
