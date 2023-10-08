@@ -75,7 +75,22 @@ mvn -version
 -----
 
 
-# Git commands
+# Git 
+
+## Installation 
+- sudo apt-get update
+- sudo apt-get install git-core
+- git --version
+
+## Generating SSH Key
+- ssh-keygen
+- eval "$(ssh-agent -s)"
+- ssh-add ~/.ssh/id_rsa
+- cat < ~/.ssh/id_rsa.pub
+
+
+
+##commands
 
 ### Clone a git repo
 - git clone <git url>
