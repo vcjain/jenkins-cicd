@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t2.small
+    Description: Enter instance size. Default is t3a.medium.
+  AMI:
+    Type: String
+    Default: ami-053b0d53c279acc90
+    Description: The Ubuntu AMI to use.
+  Key:
+    Type: String
+    Default: Jenkins-server
+    Description: YOU CAN SAFELY SKIP IT.
+  VPC:
+    Type: String
+    Default: vpc-07e679b7de3c03503
+    Description: Default VPC ID.
+  Subnet:
+    Type: String
+    Default: subnet-0dd71b33f1f982ef0
+    Description: Subnet ID.
+
+Resources:
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: "JenkinsSecurityGroup"
+      GroupDescription: "Security Group for jenkins server"
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp:  0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: '8080'
+          ToPort: '8080'
+          CidrIp:  0.0.0.0/0
+      SecurityGroupEgress:
+        - IpProtocol: -1
+          CidrIp: 0.0.0.0/0
+  ElasticIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref Server1
+  Server1:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: !Ref AMI
+      InstanceType:
+        Ref: InstanceTypeParameter
+      # KeyName: !Ref Key
+      SubnetId: !Ref Subnet
+      SecurityGroupIds:
+        - Ref: InstanceSecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 8
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -xe
+          sudo apt-get update -y
+          sudo apt-get install openjdk-17-jdk -y
+          curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+          echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+          sudo apt-get update -y
+          sudo apt-get install jenkins -y
+          sudo systemctl enable jenkins
+          sudo systemctl start jenkins
+      Tags:
+        - Key: Name
+          Value: Server1
+Outputs:
+  PublicIp:
+    Value:
+      Fn::GetAtt:
+        - Server1
+        - PublicIp
+    Description: Server's PublicIp Address
