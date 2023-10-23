@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Parameters:
   InstanceTypeParameter:
     Type: String
-    Default: t2.small
+    Default: t2.small.
     Description: Enter instance size. Default is t3a.medium.
   AMI:
     Type: String
