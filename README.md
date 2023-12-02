@@ -19,10 +19,10 @@ This page will guide different steps required to setup a Jenkins and its pre-req
 - git --version
 
 ## Generating SSH Key
-- ssh-keygen
-- eval "$(ssh-agent -s)"
-- ssh-add ~/.ssh/id_rsa
-- cat < ~/.ssh/id_rsa.pub
+- ssh-keygen      ----- generate key
+- eval "$(ssh-agent -s)"  -- Start Agent
+- ssh-add ~/.ssh/id_rsa   --- Add key in agent
+- cat < ~/.ssh/id_rsa.pub 
 
 ------  
 
