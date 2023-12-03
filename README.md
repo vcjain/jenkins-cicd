@@ -136,6 +136,7 @@ Below are some commands commonly used with Git to manage your code in repository
 - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
 Run the below command to run Jenkins as a docker container
 - docker run  --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins:/var/jenkins_home -d jenkins/jenkins:lts-jdk17
+- sudo docker logs jenkins
 
 
 
