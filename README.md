@@ -4,7 +4,7 @@ This page will guide different steps required to setup a Jenkins and its pre-req
 -----
 # Install Java 17 
 - sudo apt-get update
-- sudo apt-get install openjdk-17-jdk
+- sudo apt-get install openjdk-17-jdk -y
 
 ## Check Installation
 - java -version
