@@ -13,22 +13,7 @@ sudo apt-get install openjdk-17-jdk -y
 ## Check Installation
 - java -version
 
------- 
-
-# Git 
-
-## Installation 
-- sudo apt-get update
-- sudo apt-get install git-core
-- git --version
-
-## Generating SSH Key
-- ssh-keygen      ----- generate key
-- eval "$(ssh-agent -s)"  -- Start Agent
-- ssh-add ~/.ssh/id_rsa   --- Add key in agent
-- cat < ~/.ssh/id_rsa.pub 
-
-------  
+-------
 
 # Installing Jenkins on Ubuntu 22.04
 
@@ -48,19 +33,40 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins
  sudo apt-get update
 ```
 ```
-sudo apt-get install jenkins
+sudo apt-get install jenkins -y
 ```
 
 ## Enable Jenkins Service
-- sudo systemctl enable jenkins
-- sudo systemctl start jenkins
-- sudo systemctl status jenkins
+```
+sudo systemctl enable jenkins
+```
+```
+sudo systemctl start jenkins`
+```
+```
+sudo systemctl status jenkins
+```
 
 ## Get Initial Admin password
 - sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
+------ 
 
+# Git 
+
+## Installation 
+- sudo apt-get update
+- sudo apt-get install git-core
+- git --version
+
+## Generating SSH Key
+- ssh-keygen      ----- generate key
+- eval "$(ssh-agent -s)"  -- Start Agent
+- ssh-add ~/.ssh/id_rsa   --- Add key in agent
+- cat < ~/.ssh/id_rsa.pub 
+
+------  
 -----
 
 
