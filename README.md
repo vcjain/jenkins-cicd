@@ -48,8 +48,9 @@ sudo systemctl status jenkins
 ```
 
 ## Get Initial Admin password
-- sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
+```
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
 
 ------ 
 
